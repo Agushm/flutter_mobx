@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:boilerplate/constants/dimens.dart';
+import 'package:boilerplate/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -22,7 +23,6 @@ class TripScreen extends StatefulWidget {
 class _TripScreenState extends State<TripScreen> {
   late ThemeStore _themeStore;
   late TripStore _tripStore;
-  late List<Trip> listTrip;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -31,7 +31,6 @@ class _TripScreenState extends State<TripScreen> {
 
     _themeStore = Provider.of<ThemeStore>(context);
     _tripStore = Provider.of<TripStore>(context);
-    listTrip = List.generate(10, (index) => Trip.fromJson(mockTrip));
     if (!_tripStore.loading) {
       _tripStore.getTrips();
     }
@@ -59,31 +58,7 @@ class _TripScreenState extends State<TripScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Material(
-          elevation: 1,
-          clipBehavior: Clip.antiAlias,
-          color: Theme.of(context).cardColor,
-          shape: BeveledRectangleBorder(
-              borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(15.0))),
-          child: Container(
-            constraints: BoxConstraints(minWidth: 100),
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimens.horizontal_padding, vertical: 10),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.arrow_back),
-                SizedBox(
-                  width: 10,
-                ),
-                Text('Paket UMROH',
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ),
-        ),
+        CustomAppBarWidget(title: 'Paket Umroh'),
         Container(
           margin: EdgeInsets.symmetric(
               vertical: 10, horizontal: Dimens.horizontal_padding),

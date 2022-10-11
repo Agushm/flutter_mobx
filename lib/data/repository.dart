@@ -6,6 +6,7 @@ import 'package:boilerplate/models/post/post.dart';
 import 'package:boilerplate/models/post/post_list.dart';
 import 'package:sembast/sembast.dart';
 
+import '../models/trip/detail_trip.dart';
 import '../models/trip/trip.dart';
 import 'local/constants/db_constants.dart';
 import 'network/apis/posts/post_api.dart';
@@ -97,7 +98,7 @@ class Repository {
     return await _tripApi.getTrips().catchError((error) => throw error);
   }
 
-  Future<Trip> getDetailTrip(String slug) async {
+  Future<DetailTrip> getDetailTrip(String slug) async {
     return await _tripApi
         .getDetailTrip(slug)
         .catchError((error) => throw error);

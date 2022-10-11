@@ -137,7 +137,7 @@ class CardTrip extends StatelessWidget {
   }
 
   Widget navigate(BuildContext context) {
-    Navigator.of(context).pushNamed(Routes.detailTrip, arguments: trip);
+    Navigator.of(context).pushNamed(Routes.detailTrip, arguments: trip!.slug);
 
     return Container();
   }

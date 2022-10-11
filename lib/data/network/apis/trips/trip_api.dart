@@ -1,3 +1,4 @@
+import '../../../../models/trip/detail_trip.dart';
 import '../../../../models/trip/trip.dart';
 import '../../constants/endpoints.dart';
 import '../../dio_client.dart';
@@ -33,10 +34,10 @@ class TripApi {
   }
 
   // Returns detail trip in response
-  Future<Trip> getDetailTrip(String slug) async {
+  Future<DetailTrip> getDetailTrip(String slug) async {
     try {
       final res = await _dioClient.get(Endpoints.getTrips + '/$slug');
-      return Trip.fromJson(res);
+      return DetailTrip.fromJson(res);
     } catch (e) {
       print(e.toString());
       throw e;

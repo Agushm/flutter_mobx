@@ -15,17 +15,24 @@ mixin _$TripStore on _TripStore, Store {
   bool get loading => (_$loadingComputed ??=
           Computed<bool>(() => super.loading, name: '_TripStore.loading'))
       .value;
+  Computed<bool>? _$loadingDetailTripComputed;
+
+  @override
+  bool get loadingDetailTrip => (_$loadingDetailTripComputed ??= Computed<bool>(
+          () => super.loadingDetailTrip,
+          name: '_TripStore.loadingDetailTrip'))
+      .value;
 
   final _$detailTripAtom = Atom(name: '_TripStore.detailTrip');
 
   @override
-  Trip? get detailTrip {
+  DetailTrip? get detailTrip {
     _$detailTripAtom.reportRead();
     return super.detailTrip;
   }
 
   @override
-  set detailTrip(Trip? value) {
+  set detailTrip(DetailTrip? value) {
     _$detailTripAtom.reportWrite(value, super.detailTrip, () {
       super.detailTrip = value;
     });
@@ -34,13 +41,13 @@ mixin _$TripStore on _TripStore, Store {
   final _$_detailTripFutureAtom = Atom(name: '_TripStore._detailTripFuture');
 
   @override
-  ObservableFuture<Trip?> get _detailTripFuture {
+  ObservableFuture<DetailTrip?> get _detailTripFuture {
     _$_detailTripFutureAtom.reportRead();
     return super._detailTripFuture;
   }
 
   @override
-  set _detailTripFuture(ObservableFuture<Trip?> value) {
+  set _detailTripFuture(ObservableFuture<DetailTrip?> value) {
     _$_detailTripFutureAtom.reportWrite(value, super._detailTripFuture, () {
       super._detailTripFuture = value;
     });
@@ -111,7 +118,8 @@ mixin _$TripStore on _TripStore, Store {
 detailTrip: ${detailTrip},
 tripList: ${tripList},
 success: ${success},
-loading: ${loading}
+loading: ${loading},
+loadingDetailTrip: ${loadingDetailTrip}
     ''';
   }
 }

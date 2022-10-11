@@ -1,6 +1,7 @@
 import 'package:boilerplate/data/repository.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../models/trip/detail_trip.dart';
 import '../../models/trip/trip.dart';
 import '../../utils/dio/dio_error_util.dart';
 import '../error/error_store.dart';
@@ -22,13 +23,14 @@ abstract class _TripStore with Store {
 
   // store variables:-----------------------------------------------------------
   @observable
-  Trip? detailTrip;
+  DetailTrip? detailTrip;
 
-  static ObservableFuture<Trip?> emptyDetailTripResponse =
+  static ObservableFuture<DetailTrip?> emptyDetailTripResponse =
       ObservableFuture.value(null);
 
   @observable
-  ObservableFuture<Trip?> _detailTripFuture = ObservableFuture.value(null);
+  ObservableFuture<DetailTrip?> _detailTripFuture =
+      ObservableFuture.value(null);
 
   static ObservableFuture<List<Trip>?> emptyTripResponse =
       ObservableFuture.value(null);
@@ -45,6 +47,10 @@ abstract class _TripStore with Store {
 
   @computed
   bool get loading => _tripFuture.status == FutureStatus.pending;
+
+  @computed
+  bool get loadingDetailTrip =>
+      _detailTripFuture.status == FutureStatus.pending;
 
   // actions:-------------------------------------------------------------------
   @action
