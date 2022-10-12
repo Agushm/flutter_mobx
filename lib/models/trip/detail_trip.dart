@@ -44,41 +44,41 @@ class DetailTrip {
     required this.addons,
     required this.nocache,
   });
-  late final int id;
-  late final int insuranceId;
-  late final int seasonId;
-  late final int siteId;
-  late final int visaProviderId;
-  late final Null muassasahId;
-  late final int availableSeats;
-  late final String category;
-  late final String channel;
-  late final String closeAt;
-  late final String createdAt;
-  late final String currency;
-  late final int days;
-  late final String departureAt;
-  late final String departureFrom;
-  late final String description;
-  late final int hotelStar;
-  late final Insurance insurance;
-  late final String metaDescription;
-  late final String metaKeywords;
-  late final String metaTitle;
-  late final String invoiceDueAt;
-  late final String minimumDownPayment;
-  late final String minimumPartialPayment;
-  late final String name;
-  late final Pict pict;
-  late final int priceStart;
-  late final Season season;
-  late final bool siskopatuhReady;
-  late final String slug;
-  late final String status;
-  late final int totalBooking;
-  late final int totalPax;
-  late final int totalListener;
-  late final String updatedAt;
+  late final int? id;
+  late final int? insuranceId;
+  late final int? seasonId;
+  late final int? siteId;
+  late final int? visaProviderId;
+  late final int? muassasahId;
+  late final int? availableSeats;
+  late final String? category;
+  late final String? channel;
+  late final String? closeAt;
+  late final String? createdAt;
+  late final String? currency;
+  late final int? days;
+  late final String? departureAt;
+  late final String? departureFrom;
+  late final String? description;
+  late final int? hotelStar;
+  late final Insurance? insurance;
+  late final String? metaDescription;
+  late final String? metaKeywords;
+  late final String? metaTitle;
+  late final String? invoiceDueAt;
+  late final String? minimumDownPayment;
+  late final String? minimumPartialPayment;
+  late final String? name;
+  late final Pict? pict;
+  late final int? priceStart;
+  late final Season? season;
+  late final bool? siskopatuhReady;
+  late final String? slug;
+  late final String? status;
+  late final int? totalBooking;
+  late final int? totalPax;
+  late final int? totalListener;
+  late final String? updatedAt;
   late final List<Buses> buses;
   late final List<Flights> flights;
   late final List<Hotels> hotels;
@@ -106,7 +106,9 @@ class DetailTrip {
     departureFrom = json['departure_from'];
     description = json['description'];
     hotelStar = json['hotel_star'];
-    insurance = Insurance.fromJson(json['insurance']);
+    insurance = json['insurance'] == null
+        ? null
+        : Insurance.fromJson(json['insurance']);
     metaDescription = json['meta_description'];
     metaKeywords = json['meta_keywords'];
     metaTitle = json['meta_title'];
@@ -157,7 +159,7 @@ class DetailTrip {
     _data['departure_from'] = departureFrom;
     _data['description'] = description;
     _data['hotel_star'] = hotelStar;
-    _data['insurance'] = insurance.toJson();
+    _data['insurance'] = insurance!.toJson();
     _data['meta_description'] = metaDescription;
     _data['meta_keywords'] = metaKeywords;
     _data['meta_title'] = metaTitle;
@@ -165,9 +167,9 @@ class DetailTrip {
     _data['minimum_down_payment'] = minimumDownPayment;
     _data['minimum_partial_payment'] = minimumPartialPayment;
     _data['name'] = name;
-    _data['pict'] = pict.toJson();
+    _data['pict'] = pict!.toJson();
     _data['price_start'] = priceStart;
-    _data['season'] = season.toJson();
+    _data['season'] = season!.toJson();
     _data['siskopatuh_ready'] = siskopatuhReady;
     _data['slug'] = slug;
     _data['status'] = status;
@@ -285,17 +287,17 @@ class Season {
     required this.updatedAt,
     required this.hijri,
   });
-  late final int id;
-  late final Null siteId;
-  late final String slug;
-  late final Null totalPax;
-  late final bool active;
-  late final String name;
-  late final String startAt;
-  late final String stopAt;
-  late final String createdAt;
-  late final String updatedAt;
-  late final int hijri;
+  late final int? id;
+  late final int? siteId;
+  late final String? slug;
+  late final int? totalPax;
+  late final bool? active;
+  late final String? name;
+  late final String? startAt;
+  late final String? stopAt;
+  late final String? createdAt;
+  late final String? updatedAt;
+  late final int? hijri;
 
   Season.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -338,13 +340,13 @@ class Buses {
     required this.transport,
     required this.logo,
   });
-  late final int listingsBusId;
-  late final String listingsBusSlug;
-  late final int id;
-  late final String slug;
-  late final String bus;
-  late final String transport;
-  late final Logo logo;
+  late final int? listingsBusId;
+  late final String? listingsBusSlug;
+  late final int? id;
+  late final String? slug;
+  late final String? bus;
+  late final String? transport;
+  late final Logo? logo;
 
   Buses.fromJson(Map<String, dynamic> json) {
     listingsBusId = json['listings_bus_id'];
@@ -364,7 +366,7 @@ class Buses {
     _data['slug'] = slug;
     _data['bus'] = bus;
     _data['transport'] = transport;
-    _data['logo'] = logo.toJson();
+    _data['logo'] = logo!.toJson();
     return _data;
   }
 }
@@ -413,22 +415,22 @@ class Flights {
     this.directionType,
     this.flightType,
   });
-  late final Airline airline;
-  late final From from;
-  late final To to;
-  late final String terminal;
+  late final Airline? airline;
+  late final From? from;
+  late final To? to;
+  late final String? terminal;
   late final String? gate;
-  late final String boardingAt;
+  late final String? boardingAt;
   late final String? klass;
-  late final String etdAt;
-  late final String etaAt;
-  late final String code;
-  late final String createdAt;
-  late final String updatedAt;
-  late final String slug;
-  late final int id;
-  late final Null directionType;
-  late final Null flightType;
+  late final String? etdAt;
+  late final String? etaAt;
+  late final String? code;
+  late final String? createdAt;
+  late final String? updatedAt;
+  late final String? slug;
+  late final int? id;
+  late final String? directionType;
+  late final String? flightType;
 
   Flights.fromJson(Map<String, dynamic> json) {
     airline = Airline.fromJson(json['airline']);
@@ -451,9 +453,9 @@ class Flights {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['airline'] = airline.toJson();
-    _data['from'] = from.toJson();
-    _data['to'] = to.toJson();
+    _data['airline'] = airline!.toJson();
+    _data['from'] = from!.toJson();
+    _data['to'] = to!.toJson();
     _data['terminal'] = terminal;
     _data['gate'] = gate;
     _data['boarding_at'] = boardingAt;
@@ -481,13 +483,13 @@ class Airline {
     required this.logo,
     required this.web,
   });
-  late final int id;
-  late final String slug;
-  late final String name;
-  late final String code;
+  late final int? id;
+  late final String? slug;
+  late final String? name;
+  late final String? code;
   late final IconDetailTrip icon;
   late final Logo logo;
-  late final String web;
+  late final String? web;
 
   Airline.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -641,9 +643,9 @@ class Hotels {
     required this.checkinAt,
     required this.checkoutAt,
   });
-  late final Hotel hotel;
-  late final String checkinAt;
-  late final String checkoutAt;
+  late final Hotel? hotel;
+  late final String? checkinAt;
+  late final String? checkoutAt;
 
   Hotels.fromJson(Map<String, dynamic> json) {
     hotel = Hotel.fromJson(json['hotel']);
@@ -653,7 +655,7 @@ class Hotels {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['hotel'] = hotel.toJson();
+    _data['hotel'] = hotel!.toJson();
     _data['checkin_at'] = checkinAt;
     _data['checkout_at'] = checkoutAt;
     return _data;
@@ -671,14 +673,14 @@ class Hotel {
     required this.photo,
     required this.description,
   });
-  late final City city;
-  late final String slug;
-  late final String name;
-  late final String lat;
-  late final String lon;
-  late final int star;
-  late final Photo photo;
-  late final String description;
+  late final City? city;
+  late final String? slug;
+  late final String? name;
+  late final String? lat;
+  late final String? lon;
+  late final int? star;
+  late final Photo? photo;
+  late final String? description;
 
   Hotel.fromJson(Map<String, dynamic> json) {
     city = City.fromJson(json['city']);
@@ -693,13 +695,13 @@ class Hotel {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['city'] = city.toJson();
+    _data['city'] = city!.toJson();
     _data['slug'] = slug;
     _data['name'] = name;
     _data['lat'] = lat;
     _data['lon'] = lon;
     _data['star'] = star;
-    _data['photo'] = photo.toJson();
+    _data['photo'] = photo!.toJson();
     _data['description'] = description;
     return _data;
   }
@@ -711,16 +713,15 @@ class City {
     required this.country,
     required this.timezone,
   });
-  late final String name;
-  late final String country;
-  late final int timezone;
+  late final String? name;
+  late final String? country;
+  late final int? timezone;
 
   City.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     country = json['country'];
     timezone = json['timezone'];
   }
-
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['name'] = name;
@@ -736,9 +737,9 @@ class Photo {
     required this.medium,
     required this.small,
   });
-  late final String url;
-  late final Medium medium;
-  late final Small small;
+  late final String? url;
+  late final Medium? medium;
+  late final Small? small;
 
   Photo.fromJson(Map<String, dynamic> json) {
     url = json['url'];
@@ -749,8 +750,8 @@ class Photo {
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['url'] = url;
-    _data['medium'] = medium.toJson();
-    _data['small'] = small.toJson();
+    _data['medium'] = medium!.toJson();
+    _data['small'] = small!.toJson();
     return _data;
   }
 }
@@ -914,3 +915,262 @@ class Addons {
     return _data;
   }
 }
+
+Map<String, dynamic> mockDetailTrip = {
+  "id": 1686,
+  "insurance_id": 9,
+  "season_id": 8,
+  "site_id": 102,
+  "visa_provider_id": 271,
+  "muassasah_id": 69,
+  "available_seats": 44,
+  "category": "UMROH",
+  "channel": "umroh-akhir-tahun-plus-jordan-2022-a7bvpjorwm",
+  "close_at": "2022-12-01T13:33:35.000+07:00",
+  "created_at": "2022-10-03T13:47:20.489+07:00",
+  "currency": "IDR",
+  "days": 10,
+  "departure_at": "2022-12-12T13:33:35.000+07:00",
+  "departure_from": "JAKARTA",
+  "description":
+      "\r\n          <div class=\"tourpack__template\">\r\n            \r\n          <div class=\"st-main-description mb-3\">\r\n            <p>Umroh Akhir Tahun Plus Jordan 2022</p>\r\n          </div>\r\n        \r\n            \r\n          <div class=\"st-all-guides mb-3\">\r\n            <p class=\"st-title mb-0\">Pembimbing Jamaah:</p>\r\n            <ul class=\"st-guide-list\">\r\n        <li></li>\r\n            </ul>\r\n          </div>\r\n        \r\n            \r\n          <div class=\"st-all-includes mb-3\">\r\n            <p class=\"st-title mb-0\">Harga Termasuk:</p>\r\n            <ul class=\"st-include-list\">\r\n        <li></li>\r\n            </ul>\r\n          </div>\r\n        \r\n            \r\n          <div class=\"st-all-excludes mb-3\">\r\n            <p class=\"st-title mb-0\">Harga Tidak Termasuk:</p>\r\n            <ul class=\"st-exclude-list\">\r\n        <li></li>\r\n            </ul>\r\n          </div>\r\n        \r\n            \r\n          <div class=\"st-all-benefit mb-3\">\r\n            <p class=\"st-title mb-0\">Keunggulan/Kelebihan:</p>\r\n            <ul class=\"st-benefit-list\">\r\n        <li></li>\r\n            </ul>\r\n          </div>\r\n        \r\n            \r\n          <div class=\"st-all-tnc mb-3\">\r\n            <p class=\"st-title mb-0\">Syarat dan Ketentuan:</p>\r\n            <ul class=\"st-tnc-list\">\r\n        <li></li>\r\n            </ul>\r\n          </div>\r\n        \r\n          </div>\r\n        ",
+  "hotel_star": 5,
+  "insurance": {
+    "id": 9,
+    "siskopatuh_id": 9001,
+    "name": "Pan Pacific Syariah Insurance"
+  },
+  "meta_description": "Umroh Akhir Tahun Plus Jordan 2022",
+  "meta_keywords": "umroh akhir tahun",
+  "meta_title": "Umroh Akhir Tahun Plus Jordan 2022",
+  "invoice_due_at": "2022-11-27T13:33:35.000+07:00",
+  "minimum_down_payment": "10000000.0",
+  "minimum_partial_payment": "5000000.0",
+  "name": "Umroh Akhir Tahun Plus Jordan 2022",
+  "pict": {
+    "url":
+        "https://storage.googleapis.com/muslimpergi/uploads/listing/pict/1686/slide_1__2_.png",
+    "medium": {
+      "url":
+          "https://storage.googleapis.com/muslimpergi/uploads/listing/pict/1686/medium_slide_1__2_.png"
+    },
+    "small": {
+      "url":
+          "https://storage.googleapis.com/muslimpergi/uploads/listing/pict/1686/small_slide_1__2_.png"
+    }
+  },
+  "price_start": 25000000,
+  "season": {
+    "id": 8,
+    "site_id": null,
+    "slug": "1444-h-djx5mxd8pr",
+    "total_pax": null,
+    "active": true,
+    "name": "1444 H",
+    "start_at": "2022-07-30T17:45:00.000+07:00",
+    "stop_at": "2023-07-18T17:45:00.000+07:00",
+    "created_at": "2021-02-25T13:47:31.007+07:00",
+    "updated_at": "2022-08-30T14:20:13.966+07:00",
+    "hijri": 1444
+  },
+  "siskopatuh_ready": true,
+  "slug": "umroh-akhir-tahun-plus-jordan-2022-a7bvpjorwm",
+  "status": "ACTIVE",
+  "total_booking": 1,
+  "total_pax": 45,
+  "total_listener": 0,
+  "updated_at": "2022-10-03T14:53:41.940+07:00",
+  "buses": [
+    {
+      "listings_bus_id": 820,
+      "listings_bus_slug": "anx6x0my6b",
+      "id": 46,
+      "slug": "pq5jwrenmy",
+      "bus": "Kereta Cepat Madinah-Mekkah",
+      "transport": "Haramain High Speed Railway",
+      "logo": {
+        "url":
+            "https://storage.googleapis.com/muslimpergi/uploads/transport/logo/45/kereta-cepat-mekkah-madinah.jpg",
+        "medium": {
+          "url":
+              "https://storage.googleapis.com/muslimpergi/uploads/transport/logo/45/medium_kereta-cepat-mekkah-madinah.jpg"
+        },
+        "small": {
+          "url":
+              "https://storage.googleapis.com/muslimpergi/uploads/transport/logo/45/small_kereta-cepat-mekkah-madinah.jpg"
+        }
+      }
+    }
+  ],
+  "flights": [
+    {
+      "airline": {
+        "id": 1,
+        "slug": "saudi-arabian-airlines",
+        "name": "Saudia Airlines",
+        "code": "SV",
+        "icon": {
+          "url":
+              "https://storage.googleapis.com/muslimpergi/uploads/airline/icon/1/saudia.png",
+          "medium": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/airline/icon/1/medium_saudia.png"
+          },
+          "small": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/airline/icon/1/small_saudia.png"
+          }
+        },
+        "logo": {
+          "url":
+              "https://storage.googleapis.com/muslimpergi/uploads/airline/logo/1/saudia.jpg",
+          "medium": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/airline/logo/1/medium_saudia.jpg"
+          },
+          "small": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/airline/logo/1/small_saudia.jpg"
+          }
+        },
+        "web": "https://www.saudia.com/"
+      },
+      "from": {
+        "id": 1,
+        "slug": "soekarno-hatta-international-airport",
+        "name": "CGK - Soekarno–Hatta International Airport",
+        "code": "CGK",
+        "lat": "-6.12663526349654",
+        "lon": "106.65375961960444",
+        "city": "Jakarta",
+        "country": "ID",
+        "web": "http://soekarnohatta-airport.co.id/"
+      },
+      "to": {
+        "id": 2,
+        "slug": "medina-prince-mohammad-bin-abdulaziz-airport",
+        "name": "MED - Medina Prince Mohammad bin Abdulaziz Airport",
+        "code": "MED",
+        "lat": "24.55447027648014",
+        "lon": "39.71534981430659",
+        "city": "Medina",
+        "country": "SA",
+        "web": "http://www.madinahairport.com/"
+      },
+      "terminal": "Internasional",
+      "gate": null,
+      "boarding_at": "2022-12-12T13:43:58.598+07:00",
+      "klass": null,
+      "etd_at": "2022-12-12T13:43:58.598+07:00",
+      "eta_at": "2022-12-12T13:43:58.598+07:00",
+      "code": "SV",
+      "created_at": "2022-10-03T13:47:20.526+07:00",
+      "updated_at": "2022-10-03T14:53:41.739+07:00",
+      "slug": "amv47dddpa",
+      "id": 2235,
+      "direction_type": null,
+      "flight_type": null
+    }
+  ],
+  "hotels": [
+    {
+      "hotel": {
+        "city": {"name": "Medinah", "country": "SA", "timezone": 3},
+        "slug": "al-ansar-new-palace",
+        "name": "Al Ansar New Palace",
+        "lat": "24.4734351",
+        "lon": "39.6096953",
+        "star": 3,
+        "photo": {
+          "url":
+              "https://storage.googleapis.com/muslimpergi/uploads/hotel/photo/167/palace.jpg",
+          "medium": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/hotel/photo/167/medium_palace.jpg"
+          },
+          "small": {
+            "url":
+                "https://storage.googleapis.com/muslimpergi/uploads/hotel/photo/167/small_palace.jpg"
+          }
+        },
+        "description":
+            "Al Ansar Palace Hotel terletak 100 meter dari pintu gerbang Mesjid Nabi No.17 (pintu masuk pria dan wanita)."
+      },
+      "checkin_at": "2022-12-12T13:49:10.168+07:00",
+      "checkout_at": "2022-12-15T13:49:10.169+07:00"
+    }
+  ],
+  "itineraries": [
+    {
+      "title": "Hari Ke-1 Keberangkatan",
+      "description":
+          "<p>Keberangkatan</p><ul><li>Berkumpul di Bandara</li></ul>",
+      "day": 1,
+      "at": "2022-12-12T13:33:35.000+07:00"
+    },
+    {
+      "title": "Hari Ke-2 City Tour Madinah",
+      "description": "<p>City Tour Madinah</p><p><br></p>",
+      "day": 2,
+      "at": "2022-12-13T13:33:35.000+07:00"
+    },
+    {
+      "title": "Hari Ke-3",
+      "description": "<p>Kegiatan Hari Ke-3</p>",
+      "day": 3,
+      "at": "2022-12-14T13:33:35.000+07:00"
+    }
+  ],
+  "variants": [
+    {
+      "id": 3897,
+      "name": "[QUAD] EKONOMIS",
+      "tipe": "QUAD",
+      "currency": "IDR",
+      "price": 25000000,
+      "fee": 1000000,
+      "equipment": 0,
+      "base_price": true,
+      "sequence": 1,
+      "public": true
+    },
+    {
+      "id": 3898,
+      "name": "[DOUBLE] COUPLE",
+      "tipe": "DOUBLE",
+      "currency": "IDR",
+      "price": 30000000,
+      "fee": 1000000,
+      "equipment": 0,
+      "base_price": false,
+      "sequence": 2,
+      "public": true
+    }
+  ],
+  "tags": [],
+  "addons": [
+    {
+      "id": 639,
+      "amount": 500000,
+      "note": "Koper Jamaah",
+      "currency": "IDR",
+      "category_id": 170,
+      "category_name": "Perlengkapan Umroh",
+      "category_required": false,
+      "category_tipe": "PERSON",
+      "category_unique": false
+    },
+    {
+      "id": 640,
+      "amount": 500000,
+      "note": "Pakaian Ihram",
+      "currency": "IDR",
+      "category_id": 170,
+      "category_name": "Perlengkapan Umroh",
+      "category_required": false,
+      "category_tipe": "PERSON",
+      "category_unique": false
+    }
+  ],
+  "nocache": false
+};

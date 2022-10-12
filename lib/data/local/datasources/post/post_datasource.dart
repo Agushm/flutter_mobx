@@ -1,9 +1,7 @@
 import 'package:boilerplate/data/local/constants/db_constants.dart';
 import 'package:boilerplate/models/post/post.dart';
 import 'package:boilerplate/models/post/post_list.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sembast/sembast.dart';
-import 'package:sembast_web/sembast_web.dart';
 
 class PostDataSource {
   // A Store with int keys and Map<String, dynamic> values.

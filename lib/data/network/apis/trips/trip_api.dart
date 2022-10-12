@@ -18,7 +18,7 @@ class TripApi {
   Future<List<Trip>> getTrips() async {
     try {
       final res = await _dioClient.get(Endpoints.getTrips);
-      print(res['data'][0]);
+
       List<Trip> load = [];
       if (res['data'] != null) {
         var d = res['data'] as List;

@@ -20,7 +20,12 @@ class CustomAppBarWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.arrow_back),
+            InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: 15,
+                )),
             SizedBox(
               width: 10,
             ),

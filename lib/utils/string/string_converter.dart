@@ -17,4 +17,14 @@ class StringConverter {
       return fRupiah.format(number);
     }
   }
+
+  static String flightDate(DateTime date) {
+    final fDate = DateFormat('dd MMM yy');
+    return fDate.format(date);
+  }
+
+  static String flightTime(DateTime date) {
+    final fDate = DateFormat('hh:mm');
+    return fDate.format(date);
+  }
 }
